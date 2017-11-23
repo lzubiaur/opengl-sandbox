@@ -33,3 +33,5 @@ install_manifest.txt
 flascc/build
 
 imgui.ini
+lib/gl3w/include
+lib/gl3w/src/gl3w.c

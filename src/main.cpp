@@ -35,6 +35,7 @@ int CALLBACK WinMain(
 #else
 /* Linux and OSX use standard entry point */
 int main(int argc, char *argv[]) {
+#endif
   GLFWwindow* window;
 
   glfwSetErrorCallback(error_callback);
@@ -91,4 +92,3 @@ int main(int argc, char *argv[]) {
   exit(EXIT_SUCCESS);
 }
 
-#endif

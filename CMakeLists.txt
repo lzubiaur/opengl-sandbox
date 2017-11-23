@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
 
-set(RUNTIME_NAME "opengl")
+set(RUNTIME_NAME "mygame")
 
-project("opengl" C CXX)
+project("opengl-2D-engine" C CXX)
 
 # TODO GLFW compile options http://www.glfw.org/docs/latest/compile.html#compile_options_osx
 

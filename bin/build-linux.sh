@@ -33,4 +33,4 @@ $CMAKE \
     -DCMAKE_BUILD_TYPE=$build \
     ../..
 
-$CMAKE --build . --target rt --config $build && echo $msg
+$CMAKE --build . --target all --config $build && echo $msg

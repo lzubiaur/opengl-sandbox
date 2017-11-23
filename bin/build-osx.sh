@@ -31,4 +31,4 @@ cmake -G "Unix Makefiles" \
     ../..
 
 # Build and install the project using the Release config
-cmake --build . --target rt --config $build && echo $msg
+cmake --build . --target all --config $build && echo $msg

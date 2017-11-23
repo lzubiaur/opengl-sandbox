@@ -6,7 +6,8 @@ include_directories(
   ${GLFW_HEADERS})
 
 # Custom C flags
-set(C_FLAGS -std=c99 -pedantic-errors -pedantic)
+# set(C_FLAGS -std=c99 -pedantic-errors -pedantic)
+list(APPEND CMAKE_CXX_FLAGS "-std=c++11")
 
 # Runtime executable
 add_executable(rt main.cpp)

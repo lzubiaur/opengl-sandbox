@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 Laurent Zubiaur
+/* Copyright (c) 2017 Laurent Zubiaur
  * MIT License (http://opensource.org/licenses/MIT)
  */
 

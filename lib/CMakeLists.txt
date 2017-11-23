@@ -7,3 +7,4 @@ add_subdirectory(glfw)
 add_subdirectory(imgui)
 
 set(GLFW_HEADERS "${PROJECT_SOURCE_DIR}/glfw/include" PARENT_SCOPE)
+set(CATCH_HEADERS "${PROJECT_SOURCE_DIR}/catch" PARENT_SCOPE)

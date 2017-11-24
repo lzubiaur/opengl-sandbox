@@ -20,6 +20,7 @@ namespace Engine {
     window->init();
 
     rootNode = std::make_unique<Node>();
+    rootNode->init();
 
     auto vertexShader = std::make_unique<Shader>(_default_vertex_source, ShaderType::VertexShader);
     vertexShader->compile();
@@ -40,12 +41,14 @@ namespace Engine {
   }
 
   void Manager::mainLoop() {
+    glClearColor(.1f,.2f,.1f,1);
+    glViewport(0,0,640,480);
     while (!glfwWindowShouldClose(window->window)) {
-      glfwPollEvents();
       glClear(GL_COLOR_BUFFER_BIT);
       rootNode->update(0);
       rootNode->draw();
       glfwSwapBuffers(window->window);
+      glfwPollEvents();
     }
     glfwTerminate();
   }

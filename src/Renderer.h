@@ -15,8 +15,8 @@ namespace Engine {
   class Program;
   class Shader;
 
-  using ShaderCache = std::unordered_map<std::string,std::unique_ptr<Shader>>;
-  using ProgramCache = std::unordered_map<std::string,std::unique_ptr<Program>>;
+  using ShaderCache = std::unordered_map<std::string, std::shared_ptr<Shader>>;
+  using ProgramCache = std::unordered_map<std::string, std::shared_ptr<Program>>;
 
   class Shader {
   public:
@@ -36,7 +36,7 @@ namespace Engine {
   public:
     Program(Shader const& vertex, Shader const& frag);
     ~Program();
-    void use() { glUseProgram(_gl_program_handler); }
+    void use() const { glUseProgram(_gl_program_handler); }
     static ProgramCache cache;
   protected:
     GLuint _gl_program_handler;

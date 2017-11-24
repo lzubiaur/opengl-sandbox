@@ -21,11 +21,11 @@ TEST_CASE("Compile shader success", "[RENDERING]") {
     "}\n\0";
 
   Engine::Shader frag(std::string(fragment_source), Engine::ShaderType::FragmentShader);
-  frag.compile();
+  REQUIRE(frag.compile());
 }
 
 TEST_CASE("Compile shader failure", "[RENDERING]") {
-  const char *source = "";
+  const char *source = "void main() {";
   Engine::Shader shader(std::string(source), Engine::ShaderType::VertexShader);
   REQUIRE(shader.compile() == false);
 }

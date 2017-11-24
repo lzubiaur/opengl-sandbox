@@ -7,6 +7,9 @@ namespace Engine {
 
 #define ENGINE_DEBUG
 
+#define ENGINE_GL_MAJOR 3
+#define ENGINE_GL_MINOR 3
+
 #ifdef ENGINE_DEBUG
 #define LOG_DEBUG_ON
 #endif // ENGINE_DEBUG

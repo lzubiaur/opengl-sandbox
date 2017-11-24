@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include "common.h"
 
 namespace Engine {
 
@@ -22,8 +23,8 @@ namespace Engine {
 
     // At least OpenGL 3.2 is required by GL3W and ImGui
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, ENGINE_GL_MAJOR);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, ENGINE_GL_MINOR);
 #ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, 1);
 #endif
@@ -42,10 +43,12 @@ namespace Engine {
       fprintf(stderr, "failed to initialize OpenGL\n");
       return false;
     }
-    if (!gl3wIsSupported(3, 2)) {
+    if (!gl3wIsSupported(ENGINE_GL_MAJOR, ENGINE_GL_MINOR)) {
       fprintf(stderr, "OpenGL 3.2 not supported\n");
       return false;
     }
+
+    glfwSwapInterval(1); // Enable vsync
 
     printf("OpenGL %s, GLSL %s\n", glGetString(GL_VERSION), glGetString(GL_SHADING_LANGUAGE_VERSION));
 

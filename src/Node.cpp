@@ -1,4 +1,6 @@
 #include "Node.h"
+#include <iostream>
+#include "common.h"
 
 namespace Engine {
 
@@ -6,7 +8,9 @@ namespace Engine {
   {}
 
   Node::~Node()
-  {}
+  {
+    LOG_DEBUG("Node destructor");
+  }
 
   void Node::addChild(Node *child) {
     children.push_back(child);

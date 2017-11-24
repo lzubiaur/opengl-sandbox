@@ -2,6 +2,7 @@
 #define ENGINE_NODE_H
 
 #include <vector>
+#include <memory>
 
 namespace Engine {
 
@@ -15,6 +16,7 @@ namespace Engine {
   protected:
     std::vector<Node *> children;
   };
+  using NodeUniquePrt = std::unique_ptr<Node>;
 
 } /* Engine */
 

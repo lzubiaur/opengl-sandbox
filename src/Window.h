@@ -3,6 +3,7 @@
 
 #include <GL/gl3w.h>
 #include <GLFW/glfw3.h>
+#include <memory>
 
 namespace Engine {
 
@@ -17,6 +18,7 @@ namespace Engine {
     GLFWwindow *window;
     int width, height;
   };
+  using WindowUniquePtr = std::unique_ptr<Window>;
 
 }
 

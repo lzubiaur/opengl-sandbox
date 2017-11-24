@@ -43,5 +43,5 @@ int main(int argc, char *argv[]) {
   //
   // ImGui_ImplGlfwGL3_Shutdown();
 
-  exit(EXIT_SUCCESS);
+  return EXIT_SUCCESS;
 }

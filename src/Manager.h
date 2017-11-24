@@ -13,9 +13,9 @@ namespace Engine {
     ~Manager();
     void mainLoop();
   private:
-    Renderer *renderer;
-    Window *window;
-    Node *main_node;
+    // Renderer *renderer;
+    WindowUniquePtr window;
+    NodeUniquePrt rootNode;
   };
 
 }

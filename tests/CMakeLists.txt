@@ -7,9 +7,6 @@ include_directories(
   ${CATCH_HEADERS}
 )
 
-# C++11 is required
-list(APPEND CMAKE_CXX_FLAGS "-std=c++11")
-
 # Runtime executable
 add_executable(tests main.cpp rendering.cpp)
 # Linking against static libraries

@@ -41,17 +41,17 @@ namespace Engine {
     glAttachShader(_gl_program_handler, frag._gl_shader_handler);
     glLinkProgram(_gl_program_handler);
     GLint status;
-    char log[512];
-    glGetShaderiv(_gl_program_handler, GL_LINK_STATUS, &status);
+    glGetProgramiv(_gl_program_handler, GL_LINK_STATUS, &status);
     if (!status) {
+      char log[512];
       glGetProgramInfoLog(_gl_program_handler, 512, nullptr, log);
-      std::cerr << "ERROR: " << log << std::endl;
+      std::cerr << "ERROR: Program linking error: " << log << std::endl;
     }
   }
 
   Program::~Program()
   {}
-    
+
   /////////////////////////////// Engine::Renderer /////////////////////////////
 
   void Renderer::render() {

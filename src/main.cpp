@@ -3,6 +3,7 @@
  */
 
 #include "Manager.h"
+#include "spdlog/spdlog.h"
 
 // #include <imgui.h>
 // #include <imgui_impl_glfw_gl3.h>
@@ -29,6 +30,9 @@ int CALLBACK WinMain(
 /* Linux and OSX use standard entry point */
 int main(int argc, char *argv[]) {
 #endif
+
+  spdlog::stdout_color_mt("console");
+  spdlog::set_level(spdlog::level::debug);
 
   Engine::Manager manager;
   manager.mainLoop();

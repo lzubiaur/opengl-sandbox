@@ -5,6 +5,7 @@ project(tests C CXX)
 include_directories(
   ${GLFW_HEADERS}
   ${CATCH_HEADERS}
+  ${SPDLOG_HEADERS}
 )
 
 # Runtime executable

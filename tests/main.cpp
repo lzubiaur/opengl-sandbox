@@ -3,12 +3,15 @@
 #include "catch.hpp"
 #include "Window.h"
 #include <iostream>
+#include "spdlog/spdlog.h"
 
 int main(int argc, char *argv[]) {
+  spdlog::stdout_color_mt("console");
+  spdlog::set_level(spdlog::level::debug);
 
   Engine::Window window(640,480);
   if (!window.init()) {
-    exit(EXIT_FAILURE);
+    return EXIT_FAILURE;
   }
 
   int rc = Catch::Session().run(argc, argv);

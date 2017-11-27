@@ -30,7 +30,7 @@ namespace Engine {
 #endif
 
     // Create a windowed mode window and its OpenGL context
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(width, height, "Hello", NULL, NULL);
     if (!window) {
       glfwTerminate();
       return false;
@@ -40,17 +40,17 @@ namespace Engine {
     glfwMakeContextCurrent(window);
 
     if (gl3wInit()) {
-      fprintf(stderr, "failed to initialize OpenGL\n");
+      LOG_ERROR("Failed to initialize OpenGL");
       return false;
     }
     if (!gl3wIsSupported(ENGINE_GL_MAJOR, ENGINE_GL_MINOR)) {
-      fprintf(stderr, "OpenGL 3.2 not supported\n");
+      LOG_ERROR("OpenGL {}.{} not supported", ENGINE_GL_MAJOR, ENGINE_GL_MINOR);
       return false;
     }
 
     glfwSwapInterval(1); // Enable vsync
 
-    printf("OpenGL %s, GLSL %s\n", glGetString(GL_VERSION), glGetString(GL_SHADING_LANGUAGE_VERSION));
+    LOG_DEBUG("OpenGL {}, GLSL {}", glGetString(GL_VERSION), glGetString(GL_SHADING_LANGUAGE_VERSION));
 
     return true;
   }

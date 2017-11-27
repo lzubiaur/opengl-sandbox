@@ -1,4 +1,5 @@
 #include "Renderer.h"
+#include "common.h"
 
 namespace Engine {
 
@@ -23,9 +24,8 @@ namespace Engine {
     glGetShaderiv(_gl_shader_handler, GL_COMPILE_STATUS, &status);
     if (status != GL_TRUE) {
       GLchar buf[1024];
-      GLsizei len;
-      glGetShaderInfoLog(_gl_shader_handler, 1024, &len, buf);
-      std::cerr << "ERROR: Shader compilation failed: " << std::string(buf,len) << std::endl;
+      glGetShaderInfoLog(_gl_shader_handler, 1024, nullptr, buf);
+      LOG_ERROR("Shader compilation failed: {}", buf);
     }
     return status == GL_TRUE;
   }
@@ -34,19 +34,23 @@ namespace Engine {
 
   ProgramCache Program::cache = ProgramCache();
 
-  Program::Program(Shader const& vertex, Shader const& frag)
+  Program::Program()
   {
     _gl_program_handler = glCreateProgram();
+  }
+
+  bool Program::link(Shader const& vertex, Shader const& frag) {
     glAttachShader(_gl_program_handler, vertex._gl_shader_handler);
     glAttachShader(_gl_program_handler, frag._gl_shader_handler);
     glLinkProgram(_gl_program_handler);
     GLint status;
     glGetProgramiv(_gl_program_handler, GL_LINK_STATUS, &status);
-    if (!status) {
-      char log[512];
-      glGetProgramInfoLog(_gl_program_handler, 512, nullptr, log);
-      std::cerr << "ERROR: Program linking error: " << log << std::endl;
+    if (status != GL_TRUE) {
+      char log[1024];
+      glGetProgramInfoLog(_gl_program_handler, 1024, nullptr, log);
+      LOG_ERROR("Program linking failed: {}", log);
     }
+    return status == GL_TRUE;
   }
 
   Program::~Program()
